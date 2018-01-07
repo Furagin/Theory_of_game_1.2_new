@@ -19,10 +19,12 @@ namespace Theory_of_game_1._2
         {
             InitializeComponent();
             button4.Visible = false;
+            button5.Visible = false;
         }
 
         double[,] a1; int n = 0; int m = 0;
-        
+        double[] price_of_game;
+
         //справка
         private void button1_Click(object sender, EventArgs e)
         {
@@ -44,7 +46,7 @@ namespace Theory_of_game_1._2
             double[] fi = new double[n];
             double[] mass_ocen = new double[nmax];
             double price_game = 0;
-            double[] price_of_game = new double [nmax];
+            price_of_game = new double [nmax];
             double omax1;
             double omin1;
             int ai = 1;
@@ -162,14 +164,13 @@ namespace Theory_of_game_1._2
             textBox5.Text += "Итоговая цена игры: " + price_game + Environment.NewLine;
             textBox5.Text += Environment.NewLine;
             //массив оценок
-            textBox5.Text += "Массив цен для каждой игры: " + Environment.NewLine;
-            foreach (double element in price_of_game) { textBox5.Text += element + "; "; }
-            textBox5.Text += Environment.NewLine;
-            textBox5.Text += "Массив интервалов" + Environment.NewLine;
+
+            /*textBox5.Text += "Массив интервалов" + Environment.NewLine;
             foreach (double element in mass_ocen)
             {
                 textBox5.Text += Math.Round(element, 3) + "; ";
-            }
+            }*/
+            button5.Visible = true;
         }
         //выбор файла
         private void button3_Click(object sender, EventArgs e)
@@ -231,13 +232,20 @@ namespace Theory_of_game_1._2
                 }                
             }
             if (m > n) { n = m; }
-            button4.Visible = true;
+            button4.Visible = true;            
         }
         //показ матрицы
         private void button4_Click(object sender, EventArgs e)
         {
             Form forma = new Form4(a1);
             forma.ShowDialog();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            textBox5.Text += "Результаты для каждого розыгрыша: " + Environment.NewLine;
+            foreach (double element in price_of_game) { textBox5.Text += element + "; "; }
+            textBox5.Text += Environment.NewLine;
         }
     }
 }

@@ -48,6 +48,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -101,7 +102,7 @@
             // 
             this.button2.Location = new System.Drawing.Point(9, 207);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(199, 53);
+            this.button2.Size = new System.Drawing.Size(131, 53);
             this.button2.TabIndex = 9;
             this.button2.Text = "Генерация и вычисление";
             this.button2.UseVisualStyleBackColor = true;
@@ -158,9 +159,9 @@
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(224, 207);
+            this.button3.Location = new System.Drawing.Point(146, 207);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(203, 52);
+            this.button3.Size = new System.Drawing.Size(155, 52);
             this.button3.TabIndex = 19;
             this.button3.Text = "Показать матрицу";
             this.button3.UseVisualStyleBackColor = true;
@@ -238,11 +239,22 @@
             this.label7.TabIndex = 26;
             this.label7.Text = "И2 мин.";
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(308, 208);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(119, 52);
+            this.button4.TabIndex = 28;
+            this.button4.Text = "Пошаговые результаты";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(439, 547);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label5);
@@ -293,5 +305,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button4;
     }
 }

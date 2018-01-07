@@ -38,6 +38,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -54,7 +55,7 @@
             // 
             this.button2.Location = new System.Drawing.Point(15, 194);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(202, 63);
+            this.button2.Size = new System.Drawing.Size(133, 63);
             this.button2.TabIndex = 1;
             this.button2.Text = "Вычисление загруженной матрицы";
             this.button2.UseVisualStyleBackColor = true;
@@ -111,7 +112,8 @@
             // 
             // textBox5
             // 
-            this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox5.Location = new System.Drawing.Point(15, 271);
             this.textBox5.Multiline = true;
@@ -122,19 +124,30 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(223, 194);
+            this.button4.Location = new System.Drawing.Point(154, 194);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(186, 63);
+            this.button4.Size = new System.Drawing.Size(137, 63);
             this.button4.TabIndex = 11;
             this.button4.Text = "Показать матрицу";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(297, 194);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(112, 63);
+            this.button5.TabIndex = 12;
+            this.button5.Text = "Пошаговые результаты";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(421, 497);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.label3);
@@ -165,5 +178,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
     }
 }

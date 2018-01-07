@@ -17,12 +17,13 @@ namespace Theory_of_game_1._2
         {
             InitializeComponent();
             button3.Visible = false;
+            button4.Visible = false;
         }
 
         Formula formula = new Formula();
         double[,] a1; int n, nmax, c1 = 0, c2 = 0, c3 = 0, c4 = 0;
         double eps; string function;
-
+        double[] price_of_game;
         //справка по генерации
         private void button1_Click(object sender, EventArgs e)
         {
@@ -41,6 +42,8 @@ namespace Theory_of_game_1._2
             double[] y = new double[n];
             double[] pc = new double[n];
             double[] fi = new double[n];
+            double price_game = 0;
+            price_of_game = new double[nmax];
             double omax = 1000000; //~ max V(n))/n 
             double omin = -1000000; //~(min U(n))/n 
             int ai = 1; // такт вычисления
@@ -55,7 +58,7 @@ namespace Theory_of_game_1._2
                     a1[i, j] = funk(c1 + (c2 - c1) * (i), c3 + (c4 - c3) * (j));
                 } 
             }
-
+            int num_f = 0;
             //baka! Не юзай метки
             for (bool repit = true; repit;)
             {
@@ -80,6 +83,13 @@ namespace Theory_of_game_1._2
                 if (Math.Abs(omax - pc[I] / ai) >= 0) {omax = pc[I] / ai; }
                 if (Math.Abs(omin - fi[J] / ai) >= 0){omin = fi[J] / ai; }
                 ai++;
+                //цена игры
+                price_game += a1[I, J];
+                //массив цен игры
+                if (num_f == 0) { price_of_game[num_f] = a1[I, J]; }
+                //так легче модернизировать под цену игры на каждом шаге
+                if (num_f != 0) { price_of_game[num_f] = a1[I, J]; }
+                num_f++;
 
                 if (ai > nmax) { repit = false; ai--; }
                 if (Math.Abs(omax - omin) < eps) { repit = false; }
@@ -94,10 +104,12 @@ namespace Theory_of_game_1._2
 
             Print(ai,omax,omin,X1,X2);
 
+            textBox9.Text += "Итоговая цена игры: " + price_game + Environment.NewLine;
+
             DateTime time2 = DateTime.Now;
             textBox9.Text += "Время работы (миллисекунд)" + (time2 - time1).Milliseconds + Environment.NewLine;
             button3.Visible = true;
-
+            button4.Visible = true;
         }
 
         void Print(int ai, double omax, double omin, Queue<double> X1, Queue<double> X2)
@@ -142,6 +154,17 @@ namespace Theory_of_game_1._2
             }
             return (maxmin);
         }//поиск наибольшего минимума
+
+        //вывод пошагового решения
+        private void button4_Click(object sender, EventArgs e)
+        {
+            textBox9.Text += Environment.NewLine;
+            textBox9.Text += "Результаты для каждого розыгрыша:" + Environment.NewLine;
+            foreach (double element in price_of_game)
+            {
+                textBox9.Text += element + "; ";
+            }
+        }
 
         double minmax()
         {
