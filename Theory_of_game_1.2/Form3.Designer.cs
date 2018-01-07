@@ -52,9 +52,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(125, 194);
+            this.button2.Location = new System.Drawing.Point(15, 194);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(177, 63);
+            this.button2.Size = new System.Drawing.Size(202, 63);
             this.button2.TabIndex = 1;
             this.button2.Text = "Вычисление загруженной матрицы";
             this.button2.UseVisualStyleBackColor = true;
@@ -122,9 +122,9 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(309, 194);
+            this.button4.Location = new System.Drawing.Point(223, 194);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(100, 63);
+            this.button4.Size = new System.Drawing.Size(186, 63);
             this.button4.TabIndex = 11;
             this.button4.Text = "Показать матрицу";
             this.button4.UseVisualStyleBackColor = true;
@@ -145,6 +145,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
+            this.MinimumSize = new System.Drawing.Size(439, 544);
             this.Name = "Form3";
             this.Text = "Теория игр. v1.2 Загрузка матрицы";
             this.ResumeLayout(false);

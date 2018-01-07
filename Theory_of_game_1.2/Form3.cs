@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
+
 namespace Theory_of_game_1._2
 {
     public partial class Form3 : Form
@@ -30,8 +31,7 @@ namespace Theory_of_game_1._2
         //вычисление
         private void button2_Click(object sender, EventArgs e)
         {
-            DateTime time1 = DateTime.Now;
-
+            DateTime time1 = DateTime.Now;            
             int nmax = 0;
             double eps = 0;                        
             //Получение значений nps,eps            
