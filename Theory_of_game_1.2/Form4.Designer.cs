@@ -48,6 +48,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(424, 354);
             this.Controls.Add(this.textBox1);
+            this.MinimumSize = new System.Drawing.Size(442, 401);
             this.Name = "Form4";
             this.Text = "Матрица игры";
             this.ResumeLayout(false);
