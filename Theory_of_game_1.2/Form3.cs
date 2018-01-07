@@ -54,13 +54,13 @@ namespace Theory_of_game_1._2
             // метка 57 (Собираем массив А)
             double omax = 1000000; //~ max V(n))/n 
             double omin = -1000000; //~(min U(n))/n 
-            int J = (n + 1) / 2 - 1; // случайно выбраный столбец (+ его инициализация)
+            int J = fing_string();//(n + 1) / 2 - 1;  случайно выбраный столбец (+ его инициализация)
             int I = 0; // инициализация константы со строкой.
                        //baka! Не юзай метки
             int flag = 0; int num_f = 0;
             for (bool repit = true; repit;)
             {
-                I = 0; // Выбрали первый элемент столбца 
+                I = 0; // Выбрали первый элемент столбца, вернее первыый столбец
 
                 for (int i = 0; i < n; i++) // перебираем столбец и ищем минимальный
                 {
@@ -171,6 +171,28 @@ namespace Theory_of_game_1._2
                 textBox5.Text += Math.Round(element, 3) + "; ";
             }*/
             button5.Visible = true;
+        }
+        private int fing_string()
+        {
+            int number_string = 0;
+            double maxmin = 0, local_min_j = 0;
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    if (j == 0) local_min_j = a1[i, j];
+                    if (local_min_j > a1[i, j]) local_min_j = a1[i, j];
+                }
+                if (i == 0) { maxmin = local_min_j; number_string = i; }
+                if (maxmin < local_min_j) { maxmin = local_min_j; number_string = i; }
+            }            
+            return number_string;
+        }
+        private int find_row()
+        {
+            int number_row = 0;
+
+            return number_row; 
         }
         //выбор файла
         private void button3_Click(object sender, EventArgs e)
