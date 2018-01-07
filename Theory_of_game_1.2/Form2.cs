@@ -47,7 +47,7 @@ namespace Theory_of_game_1._2
             double omax = 1000000; //~ max V(n))/n 
             double omin = -1000000; //~(min U(n))/n 
             int ai = 1; // такт вычисления
-            int J = (n + 1) / 2 - 1; // случайно выбраный столбец (+ его инициализация)
+            int J = 0;  // случайно выбраный столбец (+ его инициализация)
             int I = 0; // инициализация константы со строкой.
 
             a1 = new double[n, n];
@@ -58,6 +58,7 @@ namespace Theory_of_game_1._2
                     a1[i, j] = funk(c1 + (c2 - c1) * (i), c3 + (c4 - c3) * (j));
                 } 
             }
+            J = fing_string();
             int num_f = 0;
             //baka! Не юзай метки
             for (bool repit = true; repit;)
@@ -218,6 +219,22 @@ namespace Theory_of_game_1._2
             //return (calkuer.Calculation(formula));
         } //расчет значений функции
 
+        private int fing_string()
+        {
+            int number_string = 0;
+            double maxmin = 0, local_min_j = 0;
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    if (j == 0) local_min_j = a1[i, j];
+                    if (local_min_j > a1[i, j]) local_min_j = a1[i, j];
+                }
+                if (i == 0) { maxmin = local_min_j; number_string = i; }
+                if (maxmin < local_min_j) { maxmin = local_min_j; number_string = i; }
+            }
+            return number_string;
+        }
 
         private void button3_Click(object sender, EventArgs e)
         {

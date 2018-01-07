@@ -269,5 +269,10 @@ namespace Theory_of_game_1._2
             foreach (double element in price_of_game) { textBox5.Text += element + "; "; }
             textBox5.Text += Environment.NewLine;
         }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
