@@ -61,6 +61,7 @@
             this.ClientSize = new System.Drawing.Size(382, 196);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Text = "Теория игр. v1.2";
             this.ResumeLayout(false);

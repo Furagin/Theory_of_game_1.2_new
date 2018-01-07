@@ -20,7 +20,8 @@ namespace Theory_of_game_1._2
         }
 
         Formula formula = new Formula();
-        double[,] a1; int n, nmax; double eps; string function;
+        double[,] a1; int n, nmax, c1 = 0, c2 = 0, c3 = 0, c4 = 0;
+        double eps; string function;
 
         //справка по генерации
         private void button1_Click(object sender, EventArgs e)
@@ -51,7 +52,7 @@ namespace Theory_of_game_1._2
             {
                 for (int j = 0; j < n; j++)
                 {
-                    a1[i, j] = funk(i+1,j+1);
+                    a1[i, j] = funk(c1 + (c2 - c1) * (i), c3 + (c4 - c3) * (j));
                 } 
             }
 
@@ -163,6 +164,10 @@ namespace Theory_of_game_1._2
             n = int.Parse(textBox1.Text);
             nmax = int.Parse(textBox2.Text);
             eps = double.Parse(textBox3.Text);
+            c1 = int.Parse(textBox4.Text);
+            c2 = int.Parse(textBox5.Text);
+            c3 = int.Parse(textBox6.Text);
+            c4 = int.Parse(textBox7.Text);
         } // чтение констант
 
         void readFormula()
@@ -190,7 +195,6 @@ namespace Theory_of_game_1._2
             //return (calkuer.Calculation(formula));
         } //расчет значений функции
 
-      
 
         private void button3_Click(object sender, EventArgs e)
         {

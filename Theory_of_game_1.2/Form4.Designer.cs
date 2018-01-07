@@ -33,6 +33,9 @@
             // 
             // textBox1
             // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.Location = new System.Drawing.Point(12, 12);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
@@ -46,7 +49,7 @@
             this.ClientSize = new System.Drawing.Size(424, 354);
             this.Controls.Add(this.textBox1);
             this.Name = "Form4";
-            this.Text = "Form4";
+            this.Text = "Матрица игры";
             this.ResumeLayout(false);
             this.PerformLayout();
 
