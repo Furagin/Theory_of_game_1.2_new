@@ -23,8 +23,8 @@ namespace Theory_of_game_1._2
         }
 
         double[,] a1; int n = 0; int m = 0;
-        double[] price_of_game;
-
+        double[] price_of_game; int nmax;
+        bool flad_load_matrix = false; string adress;
         //справка
         private void button1_Click(object sender, EventArgs e)
         {
@@ -34,11 +34,40 @@ namespace Theory_of_game_1._2
         private void button2_Click(object sender, EventArgs e)
         {
             DateTime time1 = DateTime.Now;            
-            int nmax = 0;
-            double eps = 0;                        
+            nmax = 0;
+            double eps = 0;
+            bool repit = true;
+            bool bool_print = true;
+            if(!flad_load_matrix)
+            {
+                string message = "Матрица не загружена.";
+                MessageBox.Show(message);
+                repit = false;
+                bool_print = false;
+            }
             //Получение значений nps,eps            
-            nmax = int.Parse(textBox3.Text);
-            eps = double.Parse(textBox4.Text);
+            try
+            {
+                nmax = int.Parse(textBox3.Text);
+            }
+            catch
+            {
+                string message = "Ошибка при введении количества итерация расчетов.";
+                MessageBox.Show(message);
+                repit = false;
+                bool_print = false;
+            }
+            try
+            {
+                eps = double.Parse(textBox4.Text);
+            }
+            catch
+            {
+                string message = "Ошибка при введении отклонения (точности)." + Environment.NewLine + "Проверьте знак разделения целой и дробоной части.";
+                MessageBox.Show(message);
+                repit = false;
+                bool_print = false;
+            }
                         
             double[] x = new double[n];
             double[] y = new double[n];
@@ -58,7 +87,7 @@ namespace Theory_of_game_1._2
             int I = 0; // инициализация константы со строкой.
                        //baka! Не юзай метки
             int flag = 0; int num_f = 0;
-            for (bool repit = true; repit;)
+            for (;  repit;)
             {
                 I = 0; // Выбрали первый элемент столбца, вернее первыый столбец
 
@@ -97,80 +126,82 @@ namespace Theory_of_game_1._2
                 if (Math.Abs(omax - omin) < eps) { repit = false; }
             }
 
-
-            //печать i3,ai,ai2,ai3,ai4
-            double F = (omax + omin) / 2;//печать f, omax, omin
-            //вывод констант 
-            textBox5.Multiline = true;
-            textBox5.Text = "Вычисленные значения:" + Environment.NewLine;
-            textBox5.Text += "Тактов вычисления выполнено: " + ai + "/" + nmax + Environment.NewLine;
-            textBox5.Text += "Среднее = " + F + "; omax = " + omax + "; omin = " + omin + Environment.NewLine;// ДОЛЖНЫ БЫТЬ ДРОБНЫЕ
-            //Вывод массива
-            textBox5.Text += "Результаты:" + Environment.NewLine;
-
-            Queue<double> X1 = new Queue<double>();
-            Queue<double> X2 = new Queue<double>();
-            for (int i = 0; i < n; i++)// ДОЛЖНЫ БЫТЬ ДРОБНЫЕ
+            if (bool_print)
             {
-                X1.Enqueue(x[i] / ai);  // пока приравниваю к количеству выборов, должна быть вероятность (x1[i])
-                X2.Enqueue(y[i] / ai);// пока приравниваю к количеству выборов, должна быть вероятность (y1[i])
-            }// ДОЛЖНЫ БЫТЬ ДРОБНЫЕ
+                //печать i3,ai,ai2,ai3,ai4
+                double F = (omax + omin) / 2;//печать f, omax, omin
+                                             //вывод констант 
+                textBox5.Multiline = true;
+                textBox5.Text = "Вычисленные значения:" + Environment.NewLine;
+                textBox5.Text += "Тактов вычисления выполнено: " + ai + "/" + nmax + Environment.NewLine;
+                textBox5.Text += "Среднее = " + F + "; omax = " + omax + "; omin = " + omin + Environment.NewLine;// ДОЛЖНЫ БЫТЬ ДРОБНЫЕ
+                                                                                                                  //Вывод массива
+                textBox5.Text += "Результаты:" + Environment.NewLine;
 
-            textBox5.Text += "Игрок 1 (Выборы столбцов): ";
-            for (; X1.Count != 0;)
-            {
-                textBox5.Text += Math.Round(X1.Dequeue(), 3) + " "; // ДОЛЖНЫ БЫТЬ ДРОБНЫЕ
-            }
-            textBox5.Text += Environment.NewLine;
-            textBox5.Text += "Игрок 2 (Выборы строк): ";
-            for (; X2.Count != 0;)
-            {
-                textBox5.Text += Math.Round(X2.Dequeue(), 3) + " "; // ДОЛЖНЫ БЫТЬ ДРОБНЫЕ
-            }
-            textBox5.Text += Environment.NewLine;
-
-            //переменные для нахождения максимина и минимакса нужно искать по матрице A1!!
-            double maxmin = 0, minmax = 0, local_min_j = 0, local_max_i = 0;
-            //поиск наибольшего минимума
-            for (int i = 0; i < n; i++)
-            {
-                for (int j = 0; j < n; j++)
+                Queue<double> X1 = new Queue<double>();
+                Queue<double> X2 = new Queue<double>();
+                for (int i = 0; i < n; i++)// ДОЛЖНЫ БЫТЬ ДРОБНЫЕ
                 {
-                    if (j == 0) local_min_j = a1[i, j];
-                    if (local_min_j > a1[i, j]) local_min_j = a1[i, j];
+                    X1.Enqueue(x[i] / ai);  // пока приравниваю к количеству выборов, должна быть вероятность (x1[i])
+                    X2.Enqueue(y[i] / ai);// пока приравниваю к количеству выборов, должна быть вероятность (y1[i])
+                }// ДОЛЖНЫ БЫТЬ ДРОБНЫЕ
+
+                textBox5.Text += "Игрок 1 (Выборы столбцов): ";
+                for (; X1.Count != 0;)
+                {
+                    textBox5.Text += Math.Round(X1.Dequeue(), 3) + " "; // ДОЛЖНЫ БЫТЬ ДРОБНЫЕ
                 }
-                if (i == 0) { maxmin = local_min_j; }
-                if (maxmin < local_min_j) { maxmin = local_min_j; }
-            }
-            //поиск наименьшего максимума
-            for (int j = 0; j < n; j++)
-            {
+                textBox5.Text += Environment.NewLine;
+                textBox5.Text += "Игрок 2 (Выборы строк): ";
+                for (; X2.Count != 0;)
+                {
+                    textBox5.Text += Math.Round(X2.Dequeue(), 3) + " "; // ДОЛЖНЫ БЫТЬ ДРОБНЫЕ
+                }
+                textBox5.Text += Environment.NewLine;
+
+                //переменные для нахождения максимина и минимакса нужно искать по матрице A1!!
+                double maxmin = 0, minmax = 0, local_min_j = 0, local_max_i = 0;
+                //поиск наибольшего минимума
                 for (int i = 0; i < n; i++)
                 {
-                    if (i == 0) local_max_i = a1[i, j];
-                    if (local_max_i < a1[i, j]) local_max_i = a1[i, j];
+                    for (int j = 0; j < n; j++)
+                    {
+                        if (j == 0) local_min_j = a1[i, j];
+                        if (local_min_j > a1[i, j]) local_min_j = a1[i, j];
+                    }
+                    if (i == 0) { maxmin = local_min_j; }
+                    if (maxmin < local_min_j) { maxmin = local_min_j; }
                 }
-                if (j == 0) { minmax = local_max_i; }
-                if (minmax > local_max_i) { minmax = local_max_i; }
-            }
-            //вывод максимин и минимакс
-            textBox5.Text += Environment.NewLine;
-            textBox5.Text += "MinMax = " + minmax + ";  MaxMin = " + maxmin;
-            textBox5.Text += Environment.NewLine;
-            DateTime time2 = DateTime.Now;
-            textBox5.Text += "Время работы (миллисекунд)" + (time2 - time1).Milliseconds + Environment.NewLine;
-            textBox5.Text += Environment.NewLine;
-            //массив цены игры
-            textBox5.Text += "Итоговая цена игры: " + price_game + Environment.NewLine;
-            textBox5.Text += Environment.NewLine;
-            //массив оценок
+                //поиск наименьшего максимума
+                for (int j = 0; j < n; j++)
+                {
+                    for (int i = 0; i < n; i++)
+                    {
+                        if (i == 0) local_max_i = a1[i, j];
+                        if (local_max_i < a1[i, j]) local_max_i = a1[i, j];
+                    }
+                    if (j == 0) { minmax = local_max_i; }
+                    if (minmax > local_max_i) { minmax = local_max_i; }
+                }
+                //вывод максимин и минимакс
+                textBox5.Text += Environment.NewLine;
+                textBox5.Text += "MinMax = " + minmax + ";  MaxMin = " + maxmin;
+                textBox5.Text += Environment.NewLine;
+                DateTime time2 = DateTime.Now;
+                textBox5.Text += "Время работы (миллисекунд)" + (time2 - time1).Milliseconds + Environment.NewLine;
+                textBox5.Text += Environment.NewLine;
+                //массив цены игры
+                textBox5.Text += "Итоговая цена игры: " + price_game + Environment.NewLine;
+                textBox5.Text += Environment.NewLine;
+                //массив оценок
 
-            /*textBox5.Text += "Массив интервалов" + Environment.NewLine;
-            foreach (double element in mass_ocen)
-            {
-                textBox5.Text += Math.Round(element, 3) + "; ";
-            }*/
-            button5.Visible = true;
+                /*textBox5.Text += "Массив интервалов" + Environment.NewLine;
+                foreach (double element in mass_ocen)
+                {
+                    textBox5.Text += Math.Round(element, 3) + "; ";
+                }*/
+                button5.Visible = true;
+            }
         }
         private int fing_string()
         {
@@ -200,7 +231,7 @@ namespace Theory_of_game_1._2
             Stream myStream = null;
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
-            openFileDialog1.InitialDirectory = "c:\\";
+            openFileDialog1.InitialDirectory = adress;
             openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
             openFileDialog1.FilterIndex = 2;
             openFileDialog1.RestoreDirectory = true;
@@ -214,6 +245,7 @@ namespace Theory_of_game_1._2
                         using (myStream)
                         {
                             n = 0; m = 0;
+                            flad_load_matrix = true;
                             System.IO.StreamReader file = new System.IO.StreamReader(myStream);
                             textBox1.Text = openFileDialog1.FileName;
                             string line;
@@ -265,14 +297,30 @@ namespace Theory_of_game_1._2
 
         private void button5_Click(object sender, EventArgs e)
         {
-            textBox5.Text += "Результаты для каждого розыгрыша: " + Environment.NewLine;
-            foreach (double element in price_of_game) { textBox5.Text += element + "; "; }
-            textBox5.Text += Environment.NewLine;
+            bool flag = true;
+            if (nmax >= 1001)
+            {
+                string message = "Колличество результатов силшком большое для вывода." + Environment.NewLine + "Вывод подробных результатов невозможен.";
+                MessageBox.Show(message);
+                flag = false;
+            }
+            if (flag)
+            {
+                textBox5.Text += "Результаты для каждого розыгрыша: " + Environment.NewLine;
+                foreach (double element in price_of_game) { textBox5.Text += element + "; "; }
+                textBox5.Text += Environment.NewLine;
+            }
         }
 
         private void textBox5_TextChanged(object sender, EventArgs e)
         {
 
+        }
+        //получение адреса
+        private string get_adress()
+        {
+            adress = Directory.GetCurrentDirectory();
+            return adress;
         }
     }
 }
