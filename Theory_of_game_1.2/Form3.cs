@@ -123,7 +123,7 @@ namespace Theory_of_game_1._2
                 if (ai > nmax) { repit = false; ai--; }
                 mass_ocen[flag] = Math.Abs(omax - omin);
                 flag++;
-                if (Math.Abs(omax - omin) < eps) { repit = false; }
+                if (Math.Abs(omax - omin) < eps) { repit = false; ai--; }
             }
 
             if (bool_print)
@@ -191,7 +191,7 @@ namespace Theory_of_game_1._2
                 textBox5.Text += "Время работы (миллисекунд)" + (time2 - time1).Milliseconds + Environment.NewLine;
                 textBox5.Text += Environment.NewLine;
                 //массив цены игры
-                textBox5.Text += "Итоговая цена игры: " + price_game + Environment.NewLine;
+                textBox5.Text += "Практическая цена игры: " + price_game + Environment.NewLine;
                 textBox5.Text += Environment.NewLine;
                 //массив оценок
 

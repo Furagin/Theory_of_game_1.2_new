@@ -21,6 +21,7 @@ namespace Theory_of_game_1._2
         }
 
         Formula formula = new Formula();
+        MathParser parser = new MathParser();
         double[,] a1; int n, nmax, c1 = 0, c2 = 0, c3 = 0, c4 = 0;
         double eps; string function;
         double[] price_of_game;
@@ -33,9 +34,14 @@ namespace Theory_of_game_1._2
         private void button2_Click(object sender, EventArgs e)
         {
             DateTime time1 = DateTime.Now;
-
-            readConst(); //читаем константы
-            readFormula();// читаем формулы
+            bool repit = false;
+            bool print = false;
+            if (readConst() && readFormula())
+            {
+                repit = true;
+                print = true;
+            } //читаем константы
+            // читаем формулы
 
             //Объявление основных используемых переменных
             double[] x = new double[n];
@@ -43,7 +49,7 @@ namespace Theory_of_game_1._2
             double[] pc = new double[n];
             double[] fi = new double[n];
             double price_game = 0;
-            price_of_game = new double[nmax];
+            // price_of_game = new double[nmax];
             double omax = 1000000; //~ max V(n))/n 
             double omin = -1000000; //~(min U(n))/n 
             int ai = 1; // такт вычисления
@@ -51,6 +57,7 @@ namespace Theory_of_game_1._2
             int I = 0; // инициализация константы со строкой.
 
             a1 = new double[n, n];
+            if(repit){ 
             for (int i = 0; i < n; i++)
             {
                 for (int j = 0; j < n; j++)
@@ -58,10 +65,11 @@ namespace Theory_of_game_1._2
                     a1[i, j] = funk(c1 + (c2 - c1) * (i), c3 + (c4 - c3) * (j));
                 } 
             }
+            }
             J = fing_string();
             int num_f = 0;
             //baka! Не юзай метки
-            for (bool repit = true; repit;)
+            for (; repit;)
             {
                 I = 0; // Выбрали первый элемент столбца         
                 for (int i = 0; i < n; i++) // перебираем столбец и ищем минимальный
@@ -87,13 +95,13 @@ namespace Theory_of_game_1._2
                 //цена игры
                 price_game += a1[I, J];
                 //массив цен игры
-                if (num_f == 0) { price_of_game[num_f] = a1[I, J]; }
+               // if (num_f == 0) { price_of_game[num_f] = a1[I, J]; }
                 //так легче модернизировать под цену игры на каждом шаге
-                if (num_f != 0) { price_of_game[num_f] = a1[I, J]; }
+              //  if (num_f != 0) { price_of_game[num_f] = a1[I, J]; }
                 num_f++;
 
                 if (ai > nmax) { repit = false; ai--; }
-                if (Math.Abs(omax - omin) < eps) { repit = false; }
+                if (Math.Abs(omax - omin) < eps) { repit = false; ai--; }
             }
             Queue<double> X1 = new Queue<double>();
             Queue<double> X2 = new Queue<double>();
@@ -102,15 +110,16 @@ namespace Theory_of_game_1._2
                 X1.Enqueue(x[i] / ai);
                 X2.Enqueue(y[i] / ai);
             }
-
-            Print(ai,omax,omin,X1,X2);
-
-            textBox9.Text += "Итоговая цена игры: " + price_game + Environment.NewLine;
-
-            DateTime time2 = DateTime.Now;
+            if (print)
+            {
+                Print(ai, omax, omin, X1, X2);
+            
+            textBox9.Text += "Практическая цена игры: " + price_game + Environment.NewLine;
+                DateTime time2 = DateTime.Now;
             textBox9.Text += "Время работы (миллисекунд)" + (time2 - time1).Milliseconds + Environment.NewLine;
             button3.Visible = true;
             button4.Visible = true;
+            }
         }
 
         void Print(int ai, double omax, double omin, Queue<double> X1, Queue<double> X2)
@@ -183,39 +192,45 @@ namespace Theory_of_game_1._2
             return (minmax);
         }//поиск наименьшего максимума
 
-        void readConst()
+        bool readConst()
         {
+            bool b = true;
             try { n = int.Parse(textBox1.Text);}
-            catch{MessageBox.Show(("Ошибка введения размера матрицы."+Environment.NewLine+"Используйте целые числа."));}
+            catch{MessageBox.Show(("Ошибка введения размера матрицы."+Environment.NewLine+"Используйте целые числа.")); b = false; }
             try { nmax = int.Parse(textBox2.Text); }
-            catch { MessageBox.Show(("Ошибка введения количества вычислений" + Environment.NewLine + "Используйте целые числа.")); }
+            catch { MessageBox.Show(("Ошибка введения количества вычислений" + Environment.NewLine + "Используйте целые числа.")); b = false; }
             try { eps = double.Parse(textBox3.Text); }
-            catch { MessageBox.Show(("Ошибка введения размера матрицы." + Environment.NewLine + "Проверьте знак разделения целой и дробной части числа.")); }
+            catch { MessageBox.Show(("Ошибка введения размера матрицы." + Environment.NewLine + "Проверьте знак разделения целой и дробной части числа.")); b = false; }
             try { c1 = int.Parse(textBox4.Text); }
-            catch { MessageBox.Show(("Ошибка введения расчетного параметра С1" + Environment.NewLine + "Проверьте знак разделения целой и дробной части числа.")); }
+            catch { MessageBox.Show(("Ошибка введения расчетного параметра С1" + Environment.NewLine + "Проверьте знак разделения целой и дробной части числа.")); b = false; }
             try { c2 = int.Parse(textBox5.Text); }
-            catch { MessageBox.Show(("Ошибка введения расчетного параметра С2" + Environment.NewLine + "Проверьте знак разделения целой и дробной части числа.")); }
-            try { c3 = int.Parse(textBox5.Text); }
-            catch { MessageBox.Show(("Ошибка введения расчетного параметра С3" + Environment.NewLine + "Проверьте знак разделения целой и дробной части числа.")); }
-            try { c4 = int.Parse(textBox5.Text); }
-            catch { MessageBox.Show(("Ошибка введения расчетного параметра С4" + Environment.NewLine + "Проверьте знак разделения целой и дробной части числа.")); }
+            catch { MessageBox.Show(("Ошибка введения расчетного параметра С2" + Environment.NewLine + "Проверьте знак разделения целой и дробной части числа.")); b = false; }
+            try { c3 = int.Parse(textBox6.Text); }
+            catch { MessageBox.Show(("Ошибка введения расчетного параметра С3" + Environment.NewLine + "Проверьте знак разделения целой и дробной части числа.")); b = false; }
+            try { c4 = int.Parse(textBox7.Text); }
+            catch { MessageBox.Show(("Ошибка введения расчетного параметра С4" + Environment.NewLine + "Проверьте знак разделения целой и дробной части числа.")); b = false; }
+            return (true);
         } // чтение констант
 
-        void readFormula()
+        bool readFormula()
         {
             function = textBox8.Text;
-           // Reader reader = new Reader();
-           // reader.input_string(function);
-           // formula = reader.Reading();
+            parser.Expression = function;
+            try { double a = parser.ValueAsDouble;  }
+            catch { MessageBox.Show(("Ошибка введения формулы рассчета"));return (false); }
+            return (true);
+            // Reader reader = new Reader();
+            // reader.input_string(function);
+            // formula = reader.Reading();
         } // чтение формулы
 
         double funk(double wx, double wy)
         {
-            MathParser parser = new MathParser();
+           // MathParser parser = new MathParser();
             parser.SetVariable("e", Math.E, null);
+            parser.Expression = function;
             parser.X = wx;
             parser.Y = wy;
-            parser.Expression = function;
             double a= parser.ValueAsDouble;
             a = Math.Round(a, 5);
             return (a);
