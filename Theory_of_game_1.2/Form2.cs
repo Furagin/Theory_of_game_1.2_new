@@ -185,13 +185,20 @@ namespace Theory_of_game_1._2
 
         void readConst()
         {
-            n = int.Parse(textBox1.Text);
-            nmax = int.Parse(textBox2.Text);
-            eps = double.Parse(textBox3.Text);
-            c1 = int.Parse(textBox4.Text);
-            c2 = int.Parse(textBox5.Text);
-            c3 = int.Parse(textBox6.Text);
-            c4 = int.Parse(textBox7.Text);
+            try { n = int.Parse(textBox1.Text);}
+            catch{MessageBox.Show(("Ошибка введения размера матрицы."+Environment.NewLine+"Используйте целые числа."));}
+            try { nmax = int.Parse(textBox2.Text); }
+            catch { MessageBox.Show(("Ошибка введения количества вычислений" + Environment.NewLine + "Используйте целые числа.")); }
+            try { eps = double.Parse(textBox3.Text); }
+            catch { MessageBox.Show(("Ошибка введения размера матрицы." + Environment.NewLine + "Проверьте знак разделения целой и дробной части числа.")); }
+            try { c1 = int.Parse(textBox4.Text); }
+            catch { MessageBox.Show(("Ошибка введения расчетного параметра С1" + Environment.NewLine + "Проверьте знак разделения целой и дробной части числа.")); }
+            try { c2 = int.Parse(textBox5.Text); }
+            catch { MessageBox.Show(("Ошибка введения расчетного параметра С2" + Environment.NewLine + "Проверьте знак разделения целой и дробной части числа.")); }
+            try { c3 = int.Parse(textBox5.Text); }
+            catch { MessageBox.Show(("Ошибка введения расчетного параметра С3" + Environment.NewLine + "Проверьте знак разделения целой и дробной части числа.")); }
+            try { c4 = int.Parse(textBox5.Text); }
+            catch { MessageBox.Show(("Ошибка введения расчетного параметра С4" + Environment.NewLine + "Проверьте знак разделения целой и дробной части числа.")); }
         } // чтение констант
 
         void readFormula()
