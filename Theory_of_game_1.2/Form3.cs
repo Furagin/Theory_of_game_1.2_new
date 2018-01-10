@@ -23,7 +23,9 @@ namespace Theory_of_game_1._2
         }
 
         double[,] a1; int n = 0; int m = 0;
-        double[] price_of_game; int nmax;
+        //double[] price_of_game;
+        Queue<double> price_of_game = new Queue<double>();
+        int nmax;
         bool flad_load_matrix = false; string adress;
         //справка
         private void button1_Click(object sender, EventArgs e)
@@ -83,7 +85,7 @@ namespace Theory_of_game_1._2
             double[] fi = new double[n];
             double[] mass_ocen = new double[nmax];
             double price_game = 0;
-            price_of_game = new double [nmax];
+            //price_of_game = new double [nmax];
             double omax1;
             double omin1;
             int ai = 1;
@@ -95,6 +97,11 @@ namespace Theory_of_game_1._2
             int I = 0; // инициализация константы со строкой.
                        //baka! Не юзай метки
             int flag = 0; int num_f = 0;
+            if (repit)
+            {
+                price_of_game.Clear();
+                button5.Text = "Пошаговые результаты";
+            }
             for (;  repit;)
             {
                 I = 0; // Выбрали первый элемент столбца, вернее первыый столбец
@@ -119,10 +126,11 @@ namespace Theory_of_game_1._2
                 //изменение итоговой цены игры
                 price_game += a1[I, J];
                 //массив цен игры
-                if (num_f == 0) { price_of_game[num_f] = a1[I, J];}
+                price_of_game.Enqueue(a1[I, J]);
+              //  if (num_f == 0) { price_of_game[num_f] = a1[I, J];}
                 //так легче модернизировать под цену игры на каждом шаге
-                if (num_f != 0) { price_of_game[num_f] = a1[I, J];}
-                num_f++;
+               // if (num_f != 0) { price_of_game[num_f] = a1[I, J];}
+              //  num_f++;
 
                 if (Math.Abs(omax - omax1) >= 0) { omax = omax1; }// уточнили начальное условие
                 if (Math.Abs(omin - omin1) >= 0) { omin = omin1; }// уточнили начальное условие
@@ -131,7 +139,7 @@ namespace Theory_of_game_1._2
                 if (ai > nmax) { repit = false; ai--; }
                 mass_ocen[flag] = Math.Abs(omax - omin);
                 flag++;
-                if (Math.Abs(omax - omin) < eps) { repit = false; ai--; }
+                if (Math.Abs(omax - omin) < eps) { if (ai > 100) { repit = false; ai--; } }
             }
 
             if (bool_print)
@@ -305,19 +313,19 @@ namespace Theory_of_game_1._2
 
         private void button5_Click(object sender, EventArgs e)
         {
-            bool flag = true;
-            if (nmax >= 1001)
-            {
-                string message = "Колличество результатов силшком большое для вывода." + Environment.NewLine + "Вывод подробных результатов невозможен.";
-                MessageBox.Show(message);
-                flag = false;
-            }
-            if (flag)
-            {
-                textBox5.Text += "Результаты для каждого розыгрыша: " + Environment.NewLine;
-                foreach (double element in price_of_game) { textBox5.Text += element + "; "; }
+            
                 textBox5.Text += Environment.NewLine;
-            }
+                if (button5.Text != "Следующие 100 шагов")
+                {
+                    textBox5.Text += "Результаты для каждого розыгрыша:" + Environment.NewLine;
+                    button5.Text = "Следующие 100 шагов";
+                }
+
+                for (int i = 0; price_of_game.Count != 0 && i <= 100; i++)
+                {
+                    textBox5.Text += Math.Round(price_of_game.Dequeue(), 3) + " ";
+                }
+            
         }
 
         private void textBox5_TextChanged(object sender, EventArgs e)

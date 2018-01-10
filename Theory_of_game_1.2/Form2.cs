@@ -24,7 +24,8 @@ namespace Theory_of_game_1._2
         MathParser parser = new MathParser();
         double[,] a1; int n, nmax, c1 = 0, c2 = 0, c3 = 0, c4 = 0;
         double eps; string function;
-        double[] price_of_game;
+        //double[] price_of_game;
+        Queue<double> price_of_game = new Queue<double>();
         //справка по генерации
         private void button1_Click(object sender, EventArgs e)
         {
@@ -36,9 +37,12 @@ namespace Theory_of_game_1._2
             help += "Генерация матрицы проводится с помощью функции распределения, указанной в соответсвующей графе." + Environment.NewLine;
             help += "Функция генерации может задаваться следующими функциями:" + Environment.NewLine;
             help += "Сложение|вычитание '+'|'-'; Умножение|деление '*'|'/'" + Environment.NewLine;
-            help += "Возведение в степень '^'; Корень квадратный 'sqrt';" + Environment.NewLine;
+            help += "Возведение в степень '^'; Корень квадратный 'sqr';" + Environment.NewLine;
             help += "Синус|Косинус 'sin'|'cos'; Модуль 'abs'" + Environment.NewLine;
             //здесь можно указать еще функции, какие я забыл
+            help += "И1 мин.(С1) И1 макс.(С2) И2 мин.(С3) И2 макс.(С4) пределяют платудля игроков" + Environment.NewLine;
+            help += "Расчет происходит по формуле:А[i, j] =(Х,У), где" + Environment.NewLine;
+            help += "Х=С1 + (С2 - С1) * (i-1), Y=С3 + (С4 - С3) * (j-1), i,j номер строки/столбца" + Environment.NewLine;
             help += "Для вычисления игры следует нажать кнопку 'Генерация и вычисление'." + Environment.NewLine;
             help += "Для демонстрации матрицы следует нажать кнопку 'Показать матрицу'." + Environment.NewLine;
             help += "Кнопка 'Пошаговые результаты' выводит массив результатов розыгрышей. При большом числе розыгрышей (1500+) при выводе возможно зависание программы." + Environment.NewLine;
@@ -71,18 +75,22 @@ namespace Theory_of_game_1._2
             int I = 0; // инициализация константы со строкой.
 
             a1 = new double[n, n];
-            if(repit){ 
-            for (int i = 0; i < n; i++)
+            if(repit){
+                price_of_game.Clear();
+                for (int i = 0; i < n; i++)
             {
                 for (int j = 0; j < n; j++)
                 {
                     a1[i, j] = funk(c1 + (c2 - c1) * (i), c3 + (c4 - c3) * (j));
                 } 
+                price_of_game.Clear();
+                    button4.Text = "Пошаговые результаты";
             }
             }
             J = fing_string();
             int num_f = 0;
             //baka! Не юзай метки
+            price_of_game.Clear();
             for (; repit;)
             {
                 I = 0; // Выбрали первый элемент столбца         
@@ -108,6 +116,7 @@ namespace Theory_of_game_1._2
                 ai++;
                 //цена игры
                 price_game += a1[I, J];
+                price_of_game.Enqueue(a1[I, J]);
                 //массив цен игры
                // if (num_f == 0) { price_of_game[num_f] = a1[I, J]; }
                 //так легче модернизировать под цену игры на каждом шаге
@@ -115,7 +124,7 @@ namespace Theory_of_game_1._2
                 num_f++;
 
                 if (ai > nmax) { repit = false; ai--; }
-                if (Math.Abs(omax - omin) < eps) { repit = false; ai--; }
+                if (Math.Abs(omax - omin) < eps) { if (ai > 100) { repit = false; ai--; } }
             }
             Queue<double> X1 = new Queue<double>();
             Queue<double> X2 = new Queue<double>();
@@ -183,10 +192,15 @@ namespace Theory_of_game_1._2
         private void button4_Click(object sender, EventArgs e)
         {
             textBox9.Text += Environment.NewLine;
+            if(button4.Text != "Следующие 100 шагов")
+            { 
             textBox9.Text += "Результаты для каждого розыгрыша:" + Environment.NewLine;
-            foreach (double element in price_of_game)
+            button4.Text = "Следующие 100 шагов";
+            }
+
+            for (int i=0; price_of_game.Count != 0&&i<=100;i++)
             {
-                textBox9.Text += element + "; ";
+                textBox9.Text += Math.Round(price_of_game.Dequeue(), 3) + " ";
             }
         }
 
