@@ -28,7 +28,17 @@ namespace Theory_of_game_1._2
         //справка по генерации
         private void button1_Click(object sender, EventArgs e)
         {
-
+            string help = "Справка по генерации и вычислению матрицы:" + Environment.NewLine;
+            help += "Генерируется квадратная матрица. Размерность матрицы определяется в графе 'Размерность матрицы'" + Environment.NewLine;
+            help += "Расчет матрицы проводится с помощью поочередного розыгрыша игр, согласно сгенерируемой матрице." + Environment.NewLine;
+            help += "Количество розыгрышей определяется в графе 'Количество вычислений'" + Environment.NewLine;
+            help += "В графе 'Отклонение' указывается точность вычисления." + Environment.NewLine;
+            help += "Генерация матрицы проводится с помощью функции распределения, указанной в соответсвующей графе." + Environment.NewLine;
+            help += "Функция генерации может задаваться следующими функциями:" + Environment.NewLine;
+            help += "Сложение|вычитание '+'|'-'; Умножение|деление '*'|'/'" + Environment.NewLine;
+            help += "Возведение в степень '^'; Корень квадратный 'sqrt';" + Environment.NewLine;
+            help += "Синус|Косинус 'sin'|'cos'; Модуль 'abs'" + Environment.NewLine;
+            MessageBox.Show(help);
         }
         //генерация и вычисление
         private void button2_Click(object sender, EventArgs e)
