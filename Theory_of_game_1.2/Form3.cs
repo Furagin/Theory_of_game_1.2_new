@@ -28,7 +28,13 @@ namespace Theory_of_game_1._2
         //справка
         private void button1_Click(object sender, EventArgs e)
         {
+            string help = "Справка по загрузке и вычислению матрицы:" + Environment.NewLine;
+            help += "Загрузка матрицы из внешнего источника возможна из файла с расширением '.txt'." + Environment.NewLine;
+            help += "Расчет матрицы проводится с помощью поочередного розыгрыша игр, согласно загруженной матрице." + Environment.NewLine;
+            help += "Количество розыгрышей определяется в графе 'Количество вычислений'" + Environment.NewLine;
+            help += "В графе 'Отклонение' указывается точность вычисления." + Environment.NewLine;
 
+            MessageBox.Show(help);
         }
         //вычисление
         private void button2_Click(object sender, EventArgs e)
