@@ -138,7 +138,9 @@ namespace Theory_of_game_1._2
                 Print(ai, omax, omin, X1, X2);
             
             textBox9.Text += "Практическая цена игры: " + price_game + Environment.NewLine;
-                DateTime time2 = DateTime.Now;
+            textBox5.Text += "Практическая цена игры (приведенная): " + price_game / ai + Environment.NewLine;
+            textBox5.Text += Environment.NewLine;
+            DateTime time2 = DateTime.Now;
             textBox9.Text += "Время работы (миллисекунд)" + (time2 - time1).Milliseconds + Environment.NewLine;
             button3.Visible = true;
             button4.Visible = true;

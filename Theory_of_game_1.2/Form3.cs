@@ -22,7 +22,7 @@ namespace Theory_of_game_1._2
             button5.Visible = false;
         }
 
-        double[,] a1; int n = 0; int m = 0;
+        double[,] a1, a2; int n = 0; int m = 0;
         //double[] price_of_game;
         Queue<double> price_of_game = new Queue<double>();
         int nmax;
@@ -113,7 +113,7 @@ namespace Theory_of_game_1._2
                 }
                 x[I] = x[I] + 1; // x имеет размерность количества строк и показывает сколько раз была выбранна I-я строка 
                 J = 0; //запомнили первый столбец
-
+                //J = find_row(x, y);
                 for (int j = 0; j < n; j++) //перебираем строку и ищем минимальное
                 {
                     fi[j] = fi[j] + a1[j, I]; // Вектор = вектор + элементы I стотбца 
@@ -207,7 +207,9 @@ namespace Theory_of_game_1._2
                 textBox5.Text += "Время работы (миллисекунд)" + (time2 - time1).Milliseconds + Environment.NewLine;
                 textBox5.Text += Environment.NewLine;
                 //массив цены игры
-                textBox5.Text += "Практическая цена игры: " + price_game + Environment.NewLine;
+                textBox5.Text += "Практическая цена игры (суммарная): " + price_game + Environment.NewLine;
+                textBox5.Text += Environment.NewLine;
+                textBox5.Text += "Практическая цена игры (приведенная): " + price_game/ai + Environment.NewLine;
                 textBox5.Text += Environment.NewLine;
                 //массив оценок
 
@@ -235,11 +237,33 @@ namespace Theory_of_game_1._2
             }            
             return number_string;
         }
-        private int find_row()
+        private int find_row(double[] x, double[] y)
         {
             int number_row = 0;
-
+            double minmax = 0, local_max_i = 0;
+            copy_matrix();
+            for (int j = 0; j < n; j++)
+            {
+                for (int i = 0; i < n; i++)
+                {
+                    if (i == 0) { local_max_i = a2[i, j]; a2[i, j] += a2[i, j] * x[i] * y[j]; }
+                    if (local_max_i < a2[i, j]) { local_max_i = a2[i, j]; a2[i, j] += a2[i, j] * x[i] * y[j]; }
+                }
+                if (j == 0) { minmax = local_max_i; number_row = j; }
+                if (minmax > local_max_i) { minmax = local_max_i; number_row = j; }
+            }
             return number_row; 
+        }
+        private void copy_matrix()
+        {
+            a2 = new double[n, m];
+            for(int i = 0; i < n; i++)
+            {
+                for(int j = 0; j < m; j++)
+                {
+                    a2[i, j] = a1[i, j];
+                }
+            }
         }
         //выбор файла
         private void button3_Click(object sender, EventArgs e)
@@ -309,6 +333,9 @@ namespace Theory_of_game_1._2
         {
             Form forma = new Form4(a1);
             forma.ShowDialog();
+            /*потом удалить
+            Form forma2 = new Form4(a2);
+            forma2.ShowDialog();*/
         }
 
         private void button5_Click(object sender, EventArgs e)
