@@ -237,6 +237,7 @@ namespace Theory_of_game_1._2
             }            
             return number_string;
         }
+        //не используется
         private int find_row(double[] x, double[] y)
         {
             int number_row = 0;

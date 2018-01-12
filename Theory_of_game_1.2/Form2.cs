@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Theory_of_game_1._2
 {
@@ -138,10 +139,10 @@ namespace Theory_of_game_1._2
                 Print(ai, omax, omin, X1, X2);
             
             textBox9.Text += "Практическая цена игры: " + price_game + Environment.NewLine;
-            textBox5.Text += "Практическая цена игры (приведенная): " + price_game / ai + Environment.NewLine;
-            textBox5.Text += Environment.NewLine;
+            textBox9.Text += "Практическая цена игры (приведенная): " + price_game / ai + Environment.NewLine;
+            textBox9.Text += Environment.NewLine;
             DateTime time2 = DateTime.Now;
-            textBox9.Text += "Время работы (миллисекунд)" + (time2 - time1).Milliseconds + Environment.NewLine;
+            textBox9.Text += "Время работы (миллисекунд) " + (time2 - time1).Milliseconds + Environment.NewLine;
             button3.Visible = true;
             button4.Visible = true;
             }
@@ -221,6 +222,68 @@ namespace Theory_of_game_1._2
             }
             return (minmax);
         }//поиск наименьшего максимума
+        //сохранение в внешний файл
+        private void button5_Click(object sender, EventArgs e)
+        {
+            string file_name = "";
+            bool save_file = false;
+            try
+            {
+                file_name = textBox10.Text;
+                save_file = true;
+            }
+            catch
+            {
+                string error_text = "Ошибка при вводе названия файла.";
+                MessageBox.Show(error_text);
+            }
+            if(save_file)
+            {
+                try
+                {
+                    file_name += ".txt";
+                    string adress = Directory.GetCurrentDirectory();
+                    string path = adress + "\\" + file_name;
+                    bool create_file = true;
+                    string[] lines_in_file = new string[n];
+                    try
+                    {                        
+                        for (int i = 0; i < n; i++)
+                        {
+                            for (int j = 0; j < n; j++)
+                            {
+                                lines_in_file[i] += a1[i, j] + " ";
+                            }                           
+                        }
+                    }   
+                    catch
+                    {
+                        string error_text_4 = "Ошибка. Матрица не переводится в строки.";
+                        MessageBox.Show(error_text_4);
+                    }                 
+                    if (File.Exists(path))
+                    {
+                        string error_text_3 = "Ошибка. Файл с таким названием уже существет.";
+                        MessageBox.Show(error_text_3);
+                        create_file = false;
+                    }
+                    if (create_file)
+                    {
+                        using (FileStream fs = File.Create(path))
+                        {
+                            Byte[] info = new UTF8Encoding(true).GetBytes("");                            
+                            fs.Write(info, 0, info.Length);
+                        }
+                        File.WriteAllLines(path, lines_in_file, Encoding.UTF8);
+                    }
+                }
+                catch
+                {
+                    string error_text_2 = "Ошибка при создании файла.";
+                    MessageBox.Show(error_text_2);
+                }
+            }
+        }
 
         bool readConst()
         {

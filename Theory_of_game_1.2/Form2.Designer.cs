@@ -49,6 +49,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -100,7 +103,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(9, 207);
+            this.button2.Location = new System.Drawing.Point(9, 206);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(131, 53);
             this.button2.TabIndex = 9;
@@ -149,17 +152,17 @@
             this.textBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox9.Location = new System.Drawing.Point(12, 276);
+            this.textBox9.Location = new System.Drawing.Point(12, 322);
             this.textBox9.Multiline = true;
             this.textBox9.Name = "textBox9";
             this.textBox9.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox9.Size = new System.Drawing.Size(415, 259);
+            this.textBox9.Size = new System.Drawing.Size(415, 264);
             this.textBox9.TabIndex = 18;
             // 
             // button3
             // 
             this.button3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button3.Location = new System.Drawing.Point(146, 207);
+            this.button3.Location = new System.Drawing.Point(146, 206);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(155, 52);
             this.button3.TabIndex = 19;
@@ -170,7 +173,7 @@
             // textBox4
             // 
             this.textBox4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox4.Location = new System.Drawing.Point(9, 179);
+            this.textBox4.Location = new System.Drawing.Point(9, 176);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(92, 22);
             this.textBox4.TabIndex = 20;
@@ -178,7 +181,7 @@
             // textBox5
             // 
             this.textBox5.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox5.Location = new System.Drawing.Point(116, 179);
+            this.textBox5.Location = new System.Drawing.Point(116, 176);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(92, 22);
             this.textBox5.TabIndex = 21;
@@ -186,7 +189,7 @@
             // textBox6
             // 
             this.textBox6.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox6.Location = new System.Drawing.Point(224, 179);
+            this.textBox6.Location = new System.Drawing.Point(224, 176);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(92, 22);
             this.textBox6.TabIndex = 22;
@@ -194,7 +197,7 @@
             // textBox7
             // 
             this.textBox7.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox7.Location = new System.Drawing.Point(335, 179);
+            this.textBox7.Location = new System.Drawing.Point(335, 176);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(92, 22);
             this.textBox7.TabIndex = 23;
@@ -203,7 +206,7 @@
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(22, 158);
+            this.label4.Location = new System.Drawing.Point(22, 155);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(59, 17);
             this.label4.TabIndex = 24;
@@ -213,7 +216,7 @@
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(123, 158);
+            this.label5.Location = new System.Drawing.Point(123, 155);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 17);
             this.label5.TabIndex = 25;
@@ -223,7 +226,7 @@
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(343, 158);
+            this.label6.Location = new System.Drawing.Point(343, 155);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 17);
             this.label6.TabIndex = 27;
@@ -233,7 +236,7 @@
             // 
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(242, 158);
+            this.label7.Location = new System.Drawing.Point(242, 155);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(59, 17);
             this.label7.TabIndex = 26;
@@ -242,7 +245,7 @@
             // button4
             // 
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(308, 208);
+            this.button4.Location = new System.Drawing.Point(308, 207);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(119, 52);
             this.button4.TabIndex = 28;
@@ -250,11 +253,40 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(9, 294);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(292, 22);
+            this.textBox10.TabIndex = 29;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(12, 269);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(201, 17);
+            this.label9.TabIndex = 30;
+            this.label9.Text = "Название выводимого файла";
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(308, 266);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(119, 50);
+            this.button5.TabIndex = 31;
+            this.button5.Text = "Сохранить результаты";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(439, 547);
+            this.ClientSize = new System.Drawing.Size(439, 598);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.textBox10);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
@@ -307,5 +339,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button button5;
     }
 }
