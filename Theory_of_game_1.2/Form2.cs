@@ -229,8 +229,15 @@ namespace Theory_of_game_1._2
             bool save_file = false;
             try
             {
-                file_name = textBox10.Text;
-                save_file = true;
+                if (textBox10.Text != "")
+                {
+                    file_name = textBox10.Text;
+                    save_file = true;
+                }
+                else
+                {
+                    MessageBox.Show("Не введено имя файла.");
+                }
             }
             catch
             {
