@@ -221,6 +221,7 @@ namespace Theory_of_game_1._2
                 button5.Visible = true;
             }
         }
+
         private int fing_string()
         {
             int number_string = 0;
@@ -255,6 +256,7 @@ namespace Theory_of_game_1._2
             }
             return number_row; 
         }
+
         private void copy_matrix()
         {
             a2 = new double[n, m];

@@ -147,7 +147,6 @@ namespace Theory_of_game_1._2
             button4.Visible = true;
             }
         }
-
         void Print(int ai, double omax, double omin, Queue<double> X1, Queue<double> X2)
         {
             //вывод констант 
@@ -173,8 +172,7 @@ namespace Theory_of_game_1._2
             textBox9.Text += Environment.NewLine;
             textBox9.Text += "MinMax = " + minmax() + ";  MaxMin = " + maxmin();
             textBox9.Text += Environment.NewLine;
-        }
-
+        }// печать результатов
         double maxmin()
         {
             double maxmin = 0,local_min_j=0;
@@ -190,23 +188,6 @@ namespace Theory_of_game_1._2
             }
             return (maxmin);
         }//поиск наибольшего минимума
-
-        //вывод пошагового решения
-        private void button4_Click(object sender, EventArgs e)
-        {
-            textBox9.Text += Environment.NewLine;
-            if(button4.Text != "Следующие 100 шагов")
-            { 
-            textBox9.Text += "Результаты для каждого розыгрыша:" + Environment.NewLine;
-            button4.Text = "Следующие 100 шагов";
-            }
-
-            for (int i=0; price_of_game.Count != 0&&i<=100;i++)
-            {
-                textBox9.Text += Math.Round(price_of_game.Dequeue(), 3) + " ";
-            }
-        }
-
         double minmax()
         {
             double minmax = 0, local_max_i = 0;
@@ -222,29 +203,26 @@ namespace Theory_of_game_1._2
             }
             return (minmax);
         }//поиск наименьшего максимума
-        //сохранение в внешний файл
+        private void button4_Click(object sender, EventArgs e)
+        {
+            textBox9.Text += Environment.NewLine;
+            if (button4.Text != "Следующие 100 шагов")
+            {
+                textBox9.Text += "Результаты для каждого розыгрыша:" + Environment.NewLine;
+                button4.Text = "Следующие 100 шагов";
+            }
+
+            for (int i = 0; price_of_game.Count != 0 && i <= 100; i++)
+            {
+                textBox9.Text += Math.Round(price_of_game.Dequeue(), 3) + " ";
+            }
+        }//вывод пошагового решения
         private void button5_Click(object sender, EventArgs e)
         {
             string file_name = "";
-            bool save_file = false;
-            try
-            {
-                if (textBox10.Text != "")
-                {
-                    file_name = textBox10.Text;
-                    save_file = true;
-                }
-                else
-                {
-                    MessageBox.Show("Не введено имя файла.");
-                }
-            }
-            catch
-            {
-                string error_text = "Ошибка при вводе названия файла.";
-                MessageBox.Show(error_text);
-            }
-            if(save_file)
+
+            file_name = textBox10.Text;
+            if (file_name != "")
             {
                 try
                 {
@@ -254,20 +232,20 @@ namespace Theory_of_game_1._2
                     bool create_file = true;
                     string[] lines_in_file = new string[n];
                     try
-                    {                        
+                    {
                         for (int i = 0; i < n; i++)
                         {
                             for (int j = 0; j < n; j++)
                             {
                                 lines_in_file[i] += a1[i, j] + " ";
-                            }                           
+                            }
                         }
-                    }   
+                    }
                     catch
                     {
                         string error_text_4 = "Ошибка. Матрица не переводится в строки.";
                         MessageBox.Show(error_text_4);
-                    }                 
+                    }
                     if (File.Exists(path))
                     {
                         string error_text_3 = "Ошибка. Файл с таким названием уже существет.";
@@ -278,7 +256,7 @@ namespace Theory_of_game_1._2
                     {
                         using (FileStream fs = File.Create(path))
                         {
-                            Byte[] info = new UTF8Encoding(true).GetBytes("");                            
+                            Byte[] info = new UTF8Encoding(true).GetBytes("");
                             fs.Write(info, 0, info.Length);
                         }
                         File.WriteAllLines(path, lines_in_file, Encoding.UTF8);
@@ -290,8 +268,8 @@ namespace Theory_of_game_1._2
                     MessageBox.Show(error_text_2);
                 }
             }
-        }
-
+            else { MessageBox.Show("Ошибка при вводе названия файла."); }
+        }//сохранение в внешний файл
         bool readConst()
         {
             bool b = true;
@@ -311,7 +289,6 @@ namespace Theory_of_game_1._2
             catch { MessageBox.Show(("Ошибка введения расчетного параметра С4" + Environment.NewLine + "Проверьте знак разделения целой и дробной части числа.")); b = false; }
             return (true);
         } // чтение констант
-
         bool readFormula()
         {
             function = textBox8.Text;
@@ -323,7 +300,6 @@ namespace Theory_of_game_1._2
             // reader.input_string(function);
             // formula = reader.Reading();
         } // чтение формулы
-
         double funk(double wx, double wy)
         {
            // MathParser parser = new MathParser();
@@ -340,7 +316,6 @@ namespace Theory_of_game_1._2
             //  formula.constants[2] = wy;
             //return (calkuer.Calculation(formula));
         } //расчет значений функции
-
         private int fing_string()
         {
             int number_string = 0;
@@ -357,7 +332,6 @@ namespace Theory_of_game_1._2
             }
             return number_string;
         }
-
         private void button3_Click(object sender, EventArgs e)
         {
             Form forma = new Form4(a1);
