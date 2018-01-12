@@ -142,8 +142,9 @@ namespace Theory_of_game_1._2
             textBox9.Text += "Практическая цена игры (приведенная): " + price_game / ai + Environment.NewLine;
             textBox9.Text += Environment.NewLine;
             DateTime time2 = DateTime.Now;
-            textBox9.Text += "Время работы (миллисекунд) " + (time2 - time1).Milliseconds + Environment.NewLine;
-            button3.Visible = true;
+            textBox9.Text += "Время работы (миллисекунд) " + Math.Round((time2 - time1).TotalMilliseconds,0) + Environment.NewLine;
+            
+                button3.Visible = true;
             button4.Visible = true;
             }
         }
