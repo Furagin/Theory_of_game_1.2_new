@@ -161,8 +161,11 @@ namespace Theory_of_game_1._2
                     X1.Enqueue(x[i] / ai);  // пока приравниваю к количеству выборов, должна быть вероятность (x1[i])
                     X2.Enqueue(y[i] / ai);// пока приравниваю к количеству выборов, должна быть вероятность (y1[i])
                 }// ДОЛЖНЫ БЫТЬ ДРОБНЫЕ
-                this.chart1.Series["Столбцы"].Points.DataBindY(X1);
-                this.chart2.Series["Строки"].Points.DataBindY(X2);
+                //добавление в SeriesCollection строк и столбцов
+
+                //отрисовка гистограмм
+                this.chart1.Series["Series1"].Points.DataBindY(X1);
+                this.chart2.Series["Series1"].Points.DataBindY(X2);
                 textBox5.Text += "Игрок 1 (Выборы столбцов): ";
                 for (; X1.Count != 0;)
                 {
@@ -205,7 +208,7 @@ namespace Theory_of_game_1._2
                 textBox5.Text += "MinMax = " + minmax + ";  MaxMin = " + maxmin;
                 textBox5.Text += Environment.NewLine;
                 DateTime time2 = DateTime.Now;
-                textBox9.Text += "Время работы (миллисекунд) " + Math.Round((time2 - time1).TotalMilliseconds, 0) + Environment.NewLine;
+                textBox5.Text += "Время работы (миллисекунд) " + Math.Round((time2 - time1).TotalMilliseconds, 0) + Environment.NewLine;
                 textBox5.Text += Environment.NewLine;
                 //массив цены игры
                 textBox5.Text += "Практическая цена игры (суммарная): " + price_game + Environment.NewLine;
