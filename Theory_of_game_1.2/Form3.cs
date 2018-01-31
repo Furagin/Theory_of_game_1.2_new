@@ -161,7 +161,8 @@ namespace Theory_of_game_1._2
                     X1.Enqueue(x[i] / ai);  // пока приравниваю к количеству выборов, должна быть вероятность (x1[i])
                     X2.Enqueue(y[i] / ai);// пока приравниваю к количеству выборов, должна быть вероятность (y1[i])
                 }// ДОЛЖНЫ БЫТЬ ДРОБНЫЕ
-
+                this.chart1.Series["Столбцы"].Points.DataBindY(X1);
+                this.chart2.Series["Строки"].Points.DataBindY(X2);
                 textBox5.Text += "Игрок 1 (Выборы столбцов): ";
                 for (; X1.Count != 0;)
                 {
