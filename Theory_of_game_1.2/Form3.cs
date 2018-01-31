@@ -205,7 +205,7 @@ namespace Theory_of_game_1._2
                 textBox5.Text += "MinMax = " + minmax + ";  MaxMin = " + maxmin;
                 textBox5.Text += Environment.NewLine;
                 DateTime time2 = DateTime.Now;
-                textBox5.Text += "Время работы (миллисекунд)" + (time2 - time1).Milliseconds + Environment.NewLine;
+                textBox9.Text += "Время работы (миллисекунд) " + Math.Round((time2 - time1).TotalMilliseconds, 0) + Environment.NewLine;
                 textBox5.Text += Environment.NewLine;
                 //массив цены игры
                 textBox5.Text += "Практическая цена игры (суммарная): " + price_game + Environment.NewLine;
@@ -222,6 +222,7 @@ namespace Theory_of_game_1._2
                 button5.Visible = true;
             }
         }
+
         private int fing_string()
         {
             int number_string = 0;
@@ -256,6 +257,7 @@ namespace Theory_of_game_1._2
             }
             return number_row; 
         }
+
         private void copy_matrix()
         {
             a2 = new double[n, m];
