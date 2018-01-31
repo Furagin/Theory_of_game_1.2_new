@@ -21,13 +21,12 @@ namespace Theory_of_game_1._2
             button4.Visible = false;
         }
 
-        Formula formula = new Formula();
+       // Formula formula = new Formula();
         MathParser parser = new MathParser();
         double[,] a1; int n, nmax, c1 = 0, c2 = 0, c3 = 0, c4 = 0;
         double eps; string function;
-        //double[] price_of_game;
         Queue<double> price_of_game = new Queue<double>();
-        //справка по генерации
+        
         private void button1_Click(object sender, EventArgs e)
         {
             string help = "Справка по генерации и вычислению матрицы:" + Environment.NewLine;
@@ -41,15 +40,13 @@ namespace Theory_of_game_1._2
             help += "Возведение в степень '^'; Корень квадратный 'sqr';" + Environment.NewLine;
             help += "Синус|Косинус 'sin'|'cos'; Модуль 'abs'" + Environment.NewLine;
             //здесь можно указать еще функции, какие я забыл
-            help += "И1 мин.(С1) И1 макс.(С2) И2 мин.(С3) И2 макс.(С4) пределяют платудля игроков" + Environment.NewLine;
-            help += "Расчет происходит по формуле:А[i, j] =(Х,У), где" + Environment.NewLine;
-            help += "Х=С1 + (С2 - С1) * (i-1), Y=С3 + (С4 - С3) * (j-1), i,j номер строки/столбца" + Environment.NewLine;
+            help += "Расчет происходит по формуле:А[i, j] =(Х(i),У(j))." + Environment.NewLine;
+            help += "Параметры X и У задаются через их начальные значения и шаг." + Environment.NewLine;
             help += "Для вычисления игры следует нажать кнопку 'Генерация и вычисление'." + Environment.NewLine;
             help += "Для демонстрации матрицы следует нажать кнопку 'Показать матрицу'." + Environment.NewLine;
             help += "Кнопка 'Пошаговые результаты' выводит массив результатов розыгрышей. При большом числе розыгрышей (1500+) при выводе возможно зависание программы." + Environment.NewLine;
             MessageBox.Show(help);
-        }
-        //генерация и вычисление
+        }//справка по генерации
         private void button2_Click(object sender, EventArgs e)
         {
             DateTime time1 = DateTime.Now;
@@ -68,7 +65,6 @@ namespace Theory_of_game_1._2
             double[] pc = new double[n];
             double[] fi = new double[n];
             double price_game = 0;
-            // price_of_game = new double[nmax];
             double omax = 1000000; //~ max V(n))/n 
             double omin = -1000000; //~(min U(n))/n 
             int ai = 1; // такт вычисления
@@ -82,7 +78,7 @@ namespace Theory_of_game_1._2
             {
                 for (int j = 0; j < n; j++)
                 {
-                    a1[i, j] = funk(c1 + (c2 - c1) * (i), c3 + (c4 - c3) * (j));
+                    a1[i, j] = funk(c1 + (c2 * i), c3 + (c4*j));
                 } 
                 price_of_game.Clear();
                     button4.Text = "Пошаговые результаты";
@@ -147,7 +143,7 @@ namespace Theory_of_game_1._2
                 button3.Visible = true;
             button4.Visible = true;
             }
-        }
+        }//генерация и вычисление
         void Print(int ai, double omax, double omin, Queue<double> X1, Queue<double> X2)
         {
             //вывод констант 

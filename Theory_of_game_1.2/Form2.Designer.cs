@@ -206,41 +206,41 @@
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(22, 155);
+            this.label4.Location = new System.Drawing.Point(9, 156);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 17);
+            this.label4.Size = new System.Drawing.Size(88, 17);
             this.label4.TabIndex = 24;
-            this.label4.Text = "И1 мин.";
+            this.label4.Text = "X нач. знач.";
             // 
             // label5
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(123, 155);
+            this.label5.Location = new System.Drawing.Point(137, 155);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 17);
+            this.label5.Size = new System.Drawing.Size(45, 17);
             this.label5.TabIndex = 25;
-            this.label5.Text = "И1 макс.";
+            this.label5.Text = "X шаг";
             // 
             // label6
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(343, 155);
+            this.label6.Location = new System.Drawing.Point(354, 155);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(65, 17);
+            this.label6.Size = new System.Drawing.Size(45, 17);
             this.label6.TabIndex = 27;
-            this.label6.Text = "И2 макс.";
+            this.label6.Text = "У шаг";
             // 
             // label7
             // 
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(242, 155);
+            this.label7.Location = new System.Drawing.Point(228, 156);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(59, 17);
+            this.label7.Size = new System.Drawing.Size(88, 17);
             this.label7.TabIndex = 26;
-            this.label7.Text = "И2 мин.";
+            this.label7.Text = "У нач. знач.";
             // 
             // button4
             // 
