@@ -184,7 +184,7 @@ namespace Theory_of_game_1._2
                 //поиск наибольшего минимума
                 for (int i = 0; i < n; i++)
                 {
-                    for (int j = 0; j < n; j++)
+                    for (int j = 0; j < m; j++)
                     {
                         if (j == 0) local_min_j = a1[i, j];
                         if (local_min_j > a1[i, j]) local_min_j = a1[i, j];
@@ -193,7 +193,7 @@ namespace Theory_of_game_1._2
                     if (maxmin < local_min_j) { maxmin = local_min_j; }
                 }
                 //поиск наименьшего максимума
-                for (int j = 0; j < n; j++)
+                for (int j = 0; j < m; j++)
                 {
                     for (int i = 0; i < n; i++)
                     {
@@ -320,9 +320,12 @@ namespace Theory_of_game_1._2
                             int r = 0; int k = 0; 
                             foreach (string element in drop_full_line)
                             {
-                                a1[r, k] = int.Parse(element);
-                                k++;
-                                if(k == m) { r++; k = 0; }
+                                if (element != "")
+                                {
+                                    a1[r, k] = int.Parse(element);
+                                    k++;
+                                    if (k == m) { r++; k = 0; }
+                                }
                             }   
                         }
                     }
