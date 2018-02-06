@@ -171,8 +171,12 @@ namespace Theory_of_game_1._2
                 int num_el = 1;
                 for (; X1.Count != 0;)
                 {
-                    textBox5.Text += num_el + " - ";
-                    textBox5.Text += Math.Round(X1.Dequeue(), 3) + "; "; // ДОЛЖНЫ БЫТЬ ДРОБНЫЕ
+                    double buffer = Math.Round(X1.Dequeue(), 3);
+                    if (buffer != 0)
+                    {
+                        textBox5.Text += num_el + " - ";
+                        textBox5.Text += buffer + "; "; // ДОЛЖНЫ БЫТЬ ДРОБНЫЕ
+                    }
                     num_el++;
                 }
                 textBox5.Text += Environment.NewLine;
@@ -181,8 +185,12 @@ namespace Theory_of_game_1._2
                 textBox5.Text += "Игрок 2 (Выборы строк): ";
                 for (; X2.Count != 0;)
                 {
-                    textBox5.Text += num_el + " - ";
-                    textBox5.Text += Math.Round(X2.Dequeue(), 3) + " "; // ДОЛЖНЫ БЫТЬ ДРОБНЫЕ
+                    double buffer = Math.Round(X2.Dequeue(), 3);
+                    if (buffer != 0)
+                    {
+                        textBox5.Text += num_el + " - ";
+                        textBox5.Text += buffer + " "; // ДОЛЖНЫ БЫТЬ ДРОБНЫЕ
+                    }
                     num_el++;
                 }
                 textBox5.Text += Environment.NewLine;
