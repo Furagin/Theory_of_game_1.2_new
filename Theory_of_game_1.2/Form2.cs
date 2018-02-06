@@ -154,15 +154,31 @@ namespace Theory_of_game_1._2
             //Вывод массива
             textBox9.Text += "Результаты:" + Environment.NewLine;
             textBox9.Text += "Игрок 1 (Выборы столбцов): ";
+            //номер элемента
+            int num_el = 1;
             for (; X1.Count != 0;)
             {
-                textBox9.Text += Math.Round(X1.Dequeue(), 3) + " ";
+                double buffer = Math.Round(X1.Dequeue(), 3);
+                if (buffer != 0)
+                {
+                    textBox9.Text += num_el + " - ";
+                    textBox9.Text += buffer + " ";
+                }
+                num_el++;
             }
             textBox9.Text += Environment.NewLine;
+            //обнуление номера
+            num_el = 1;
             textBox9.Text += "Игрок 2 (Выборы строк): ";
             for (; X2.Count != 0;)
             {
-                textBox9.Text += Math.Round(X2.Dequeue(), 3) + " ";
+                double buffer = Math.Round(X1.Dequeue(), 3);
+                if (buffer != 0)
+                {
+                    textBox9.Text += num_el + " - ";
+                    textBox9.Text += buffer + " ";
+                }
+                num_el++;
             }
             textBox9.Text += Environment.NewLine;
 
