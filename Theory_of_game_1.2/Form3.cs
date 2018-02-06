@@ -303,13 +303,16 @@ namespace Theory_of_game_1._2
                             //размерность по столбцам                            
                             for (int i = 0; (line = file.ReadLine()) != null; i++)
                             {
+                                //проверка на информативность
+                                //if (line == "") { n--;break; }
                                 //чтени построчно           
                                 if (flag == 0) { full_line = line; }
                                 if (flag != 0) { full_line += " " + line; }                     
                                 drop_line = line.Split(' ');
                                 if (flag == 0)
                                 {
-                                    foreach (string element in drop_line) { n++; };                                    
+                                    foreach (string element in drop_line)
+                                    { if (element != "") n++; };                                    
                                     flag++;
                                 }                                
                                 m++;
