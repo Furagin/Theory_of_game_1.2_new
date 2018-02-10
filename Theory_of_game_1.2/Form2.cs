@@ -19,6 +19,8 @@ namespace Theory_of_game_1._2
             InitializeComponent();
             button3.Visible = false;
             button4.Visible = false;
+            this.chart1.Legends.Clear();
+            this.chart2.Legends.Clear();
         }
 
        // Formula formula = new Formula();
@@ -155,6 +157,12 @@ namespace Theory_of_game_1._2
             textBox9.Text += "Результаты:" + Environment.NewLine;
             textBox9.Text += "Игрок 1 (Выборы столбцов): ";
             //номер элемента
+
+            this.chart1.Series["Series1"].Points.DataBindY(X1);
+            this.chart2.Series["Series1"].Points.DataBindY(X2);
+            this.chart1.Legends.Clear();
+            this.chart2.Legends.Clear();
+
             int num_el = 1;
             for (; X1.Count != 0;)
             {
@@ -170,7 +178,7 @@ namespace Theory_of_game_1._2
             //обнуление номера
             num_el = 1;
             textBox9.Text += "Игрок 2 (Выборы строк): ";
-            for (; X2.Count != 0;)
+            for (; X1.Count != 0;)
             {
                 double buffer = Math.Round(X1.Dequeue(), 3);
                 if (buffer != 0)
@@ -283,6 +291,8 @@ namespace Theory_of_game_1._2
             }
             else { MessageBox.Show("Ошибка при вводе названия файла."); }
         }//сохранение в внешний файл
+
+
         bool readConst()
         {
             bool b = true;

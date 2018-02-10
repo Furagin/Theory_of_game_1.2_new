@@ -20,6 +20,8 @@ namespace Theory_of_game_1._2
             InitializeComponent();
             button4.Visible = false;
             button5.Visible = false;
+            this.chart1.Legends.Clear();
+            this.chart2.Legends.Clear();
         }
 
         double[,] a1, a2; int n = 0; int m = 0;
@@ -166,6 +168,8 @@ namespace Theory_of_game_1._2
                 //отрисовка гистограмм
                 this.chart1.Series["Series1"].Points.DataBindY(X1);
                 this.chart2.Series["Series1"].Points.DataBindY(X2);
+                this.chart1.Legends.Clear();
+                this.chart2.Legends.Clear();
                 textBox5.Text += "Игрок 1 (Выборы столбцов): ";
                 //номер элемента num_el 
                 int num_el = 1;
@@ -307,6 +311,7 @@ namespace Theory_of_game_1._2
                     {
                         using (myStream)
                         {
+                            
                             n = 0; m = 0;
                             flad_load_matrix = true;
                             System.IO.StreamReader file = new System.IO.StreamReader(myStream);
@@ -384,10 +389,7 @@ namespace Theory_of_game_1._2
             
         }
 
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
 
-        }
         //получение адреса
         private string get_adress()
         {
