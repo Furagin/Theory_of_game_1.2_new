@@ -21,7 +21,7 @@ namespace Theory_of_game_1._2
             button4.Visible = false;
             button5.Visible = false;
             this.chart1.Legends.Clear();
-            this.chart2.Legends.Clear();
+            this.chart2.Legends.Clear();            
         }
 
         double[,] a1, a2; int n = 0; int m = 0;
