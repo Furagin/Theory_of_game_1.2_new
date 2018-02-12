@@ -19,6 +19,7 @@ namespace Theory_of_game_1._2
             InitializeComponent();
             button3.Visible = false;
             button4.Visible = false;
+            button6.Visible = false;
             this.chart1.Legends.Clear();
             this.chart2.Legends.Clear();
         }
@@ -28,7 +29,9 @@ namespace Theory_of_game_1._2
         double[,] a1; int n, nmax, c1 = 0, c2 = 0, c3 = 0, c4 = 0;
         double eps; string function;
         Queue<double> price_of_game = new Queue<double>();
-        
+        //очереди для отображения в увеличенной форме диаграм
+        Queue<double> X3 = new Queue<double>();
+        Queue<double> X4 = new Queue<double>();
         private void button1_Click(object sender, EventArgs e)
         {
             string help = "Справка по генерации и вычислению матрицы:" + Environment.NewLine;
@@ -130,7 +133,11 @@ namespace Theory_of_game_1._2
             for (int i = 0; i < n; i++)
             {
                 X1.Enqueue(x[i] / ai);
+                //нет, нельзя сделать это без дополнительных очередей
+                X3.Enqueue(x[i] / ai);
+                //можно было создать один массив, но как водится...
                 X2.Enqueue(y[i] / ai);
+                X4.Enqueue(y[i] / ai);
             }
             if (print)
             {
@@ -142,8 +149,9 @@ namespace Theory_of_game_1._2
             DateTime time2 = DateTime.Now;
             textBox9.Text += "Время работы (миллисекунд) " + Math.Round((time2 - time1).TotalMilliseconds,0) + Environment.NewLine;
             
-                button3.Visible = true;
+            button3.Visible = true;
             button4.Visible = true;
+            button6.Visible = true;
             }
         }//генерация и вычисление
         void Print(int ai, double omax, double omin, Queue<double> X1, Queue<double> X2)
@@ -178,9 +186,9 @@ namespace Theory_of_game_1._2
             //обнуление номера
             num_el = 1;
             textBox9.Text += "Игрок 2 (Выборы строк): ";
-            for (; X1.Count != 0;)
+            for (; X2.Count != 0;)
             {
-                double buffer = Math.Round(X1.Dequeue(), 3);
+                double buffer = Math.Round(X2.Dequeue(), 3);
                 if (buffer != 0)
                 {
                     textBox9.Text += num_el + " - ";
@@ -291,7 +299,12 @@ namespace Theory_of_game_1._2
             }
             else { MessageBox.Show("Ошибка при вводе названия файла."); }
         }//сохранение в внешний файл
-
+        
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Form forma2 = new Form5(X3, X4);
+            forma2.ShowDialog();
+        }//увеличенные диаграммы
 
         bool readConst()
         {

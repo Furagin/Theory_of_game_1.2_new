@@ -20,6 +20,7 @@ namespace Theory_of_game_1._2
             InitializeComponent();
             button4.Visible = false;
             button5.Visible = false;
+            button6.Visible = false;
             this.chart1.Legends.Clear();
             this.chart2.Legends.Clear();            
         }
@@ -27,6 +28,9 @@ namespace Theory_of_game_1._2
         double[,] a1, a2; int n = 0; int m = 0;
         //double[] price_of_game;
         Queue<double> price_of_game = new Queue<double>();
+        //очереди для передачи в другую форму
+        Queue<double> X3 = new Queue<double>();
+        Queue<double> X4 = new Queue<double>();
         int nmax;
         bool flad_load_matrix = false; string adress;
         //справка
@@ -176,6 +180,7 @@ namespace Theory_of_game_1._2
                 for (; X1.Count != 0;)
                 {
                     double buffer = Math.Round(X1.Dequeue(), 3);
+                    X3.Enqueue(buffer);
                     if (buffer != 0)
                     {
                         textBox5.Text += num_el + " - ";
@@ -190,6 +195,7 @@ namespace Theory_of_game_1._2
                 for (; X2.Count != 0;)
                 {
                     double buffer = Math.Round(X2.Dequeue(), 3);
+                    X4.Enqueue(buffer);
                     if (buffer != 0)
                     {
                         textBox5.Text += num_el + " - ";
@@ -243,6 +249,7 @@ namespace Theory_of_game_1._2
                     textBox5.Text += Math.Round(element, 3) + "; ";
                 }*/
                 button5.Visible = true;
+                button6.Visible = true;
             }
         }
 
@@ -360,7 +367,7 @@ namespace Theory_of_game_1._2
                 }                
             }
             if (m > n) { n = m; }
-            button4.Visible = true;            
+            button4.Visible = true;                      
         }
         //показ матрицы
         private void button4_Click(object sender, EventArgs e)
@@ -387,6 +394,12 @@ namespace Theory_of_game_1._2
                     textBox5.Text += Math.Round(price_of_game.Dequeue(), 3) + " ";
                 }
             
+        }
+        //увеличенные диаграммы
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Form forma2 = new Form5(X3, X4);
+            forma2.ShowDialog();
         }
 
 

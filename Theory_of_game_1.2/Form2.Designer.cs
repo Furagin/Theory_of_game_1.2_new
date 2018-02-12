@@ -117,7 +117,7 @@
             // button2
             // 
             this.button2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button2.Location = new System.Drawing.Point(444, 99);
+            this.button2.Location = new System.Drawing.Point(444, 103);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(117, 53);
             this.button2.TabIndex = 9;
@@ -167,17 +167,17 @@
             this.textBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox9.Location = new System.Drawing.Point(12, 214);
+            this.textBox9.Location = new System.Drawing.Point(12, 226);
             this.textBox9.Multiline = true;
             this.textBox9.Name = "textBox9";
             this.textBox9.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox9.Size = new System.Drawing.Size(912, 248);
+            this.textBox9.Size = new System.Drawing.Size(912, 194);
             this.textBox9.TabIndex = 18;
             // 
             // button3
             // 
             this.button3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button3.Location = new System.Drawing.Point(567, 99);
+            this.button3.Location = new System.Drawing.Point(567, 104);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(112, 52);
             this.button3.TabIndex = 19;
@@ -260,7 +260,7 @@
             // button4
             // 
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(685, 99);
+            this.button4.Location = new System.Drawing.Point(685, 104);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(114, 52);
             this.button4.TabIndex = 28;
@@ -270,7 +270,7 @@
             // 
             // textBox10
             // 
-            this.textBox10.Location = new System.Drawing.Point(233, 172);
+            this.textBox10.Location = new System.Drawing.Point(233, 177);
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(555, 22);
             this.textBox10.TabIndex = 29;
@@ -278,7 +278,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(12, 175);
+            this.label9.Location = new System.Drawing.Point(12, 178);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(201, 17);
             this.label9.TabIndex = 30;
@@ -287,7 +287,7 @@
             // button5
             // 
             this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.Location = new System.Drawing.Point(805, 158);
+            this.button5.Location = new System.Drawing.Point(805, 163);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(119, 50);
             this.button5.TabIndex = 31;
@@ -302,7 +302,7 @@
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(12, 519);
+            this.chart1.Location = new System.Drawing.Point(12, 465);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
@@ -318,7 +318,7 @@
             this.chart2.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             this.chart2.Legends.Add(legend2);
-            this.chart2.Location = new System.Drawing.Point(480, 519);
+            this.chart2.Location = new System.Drawing.Point(480, 465);
             this.chart2.Name = "chart2";
             series2.ChartArea = "ChartArea1";
             series2.Legend = "Legend1";
@@ -332,7 +332,7 @@
             // 
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(199, 499);
+            this.label10.Location = new System.Drawing.Point(199, 445);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(62, 17);
             this.label10.TabIndex = 34;
@@ -342,7 +342,7 @@
             // 
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(663, 499);
+            this.label11.Location = new System.Drawing.Point(663, 445);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(62, 17);
             this.label11.TabIndex = 35;
@@ -352,7 +352,7 @@
             // 
             this.label12.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(381, 478);
+            this.label12.Location = new System.Drawing.Point(381, 424);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(212, 17);
             this.label12.TabIndex = 36;
@@ -361,18 +361,19 @@
             // button6
             // 
             this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button6.Location = new System.Drawing.Point(805, 99);
+            this.button6.Location = new System.Drawing.Point(805, 104);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(119, 53);
             this.button6.TabIndex = 37;
             this.button6.Text = "Увеличенные диаграммы";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(936, 751);
+            this.ClientSize = new System.Drawing.Size(936, 697);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
@@ -403,6 +404,7 @@
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
+            this.MaximumSize = new System.Drawing.Size(954, 744);
             this.MinimumSize = new System.Drawing.Size(954, 744);
             this.Name = "Form2";
             this.Text = "Теория игр. v1.2 Генерация матрицы";
